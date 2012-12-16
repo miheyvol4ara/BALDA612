@@ -235,5 +235,49 @@ namespace балд
                     button3.Visible = true;
                 }
         }
+        void maincheck(string file, string[] xx, ref string x, string rts)
+        {
+            string filestr = "";//Инициализируем пустые строки filestr - считывается с файла
+            bool korm = true, plu = true;
+            StreamReader r = new StreamReader(filename2);
+            for (; (filestr = r.ReadLine()) != null; )//Итерация до конца файла
+            {
+                if (rts == filestr)//Если наше слово нашлось в файле
+                {
+                    for (int i = 0; i < xx.Length; i++)//проверяем на совпадение с уже использованными словами
+                    {
+                        if (rts == xx[i])//Если слово уже было..
+                            korm = false;
+                    }
+                    if (korm)//Если слова не было
+                    {
+                        listadd(ref player, listBox1, listBox2, rts, ref q1, ref q2);//Добавляем пользователю в список
+                        x += rts + " ";//Добавляем в массив созданных слов.
+                    }
+                    plu = false;//делаем переменную plu - false и выходим из for'a брейком
+                    break;
+                }
+            }
+            if (plu && korm)//Если слова не было в словаре
+            {
+                MessageBox.Show("Такого слова нет в словаре", "Ошибка");
+                for (int i = 0; i < A.Length; i++)
+                    for (int j = 0; j < A[i].Length; j++)
+                        if (A[i][j] != dataGridView1.Rows[i].Cells[j].Value as string)
+                            dataGridView1.Rows[i].Cells[j].Value = " ";
+            }
+            if (!korm)//Если слово уже было
+            {
+                MessageBox.Show("Такое слово уже было", "Ошибка");
+                for (int i = 0; i < A.Length; i++)
+                    for (int j = 0; j < A[i].Length; j++)
+                        if (A[i][j] != dataGridView1.Rows[i].Cells[j].Value as string)
+                            dataGridView1.Rows[i].Cells[j].Value = " ";
+            }
+            pastedm(ref A, dataGridView1);//переприсваиваем в А конечное слово
+            str = "";//Обнуляем строки, закрываем потоки
+            rts = "";
+            r.Close();
+        }
     }
 }
