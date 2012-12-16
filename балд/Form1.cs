@@ -15,5 +15,14 @@ namespace балд
         {
             InitializeComponent();
         }
+                int Sec = 0;
+        Form2 f1 = new Form2();
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Sec++;
+            if (Sec == 15) { f1.Show();
+            this.Visible = false;
+            }
+        }
     }
 }
