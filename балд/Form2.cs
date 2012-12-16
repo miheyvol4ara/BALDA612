@@ -175,5 +175,28 @@ namespace балд
                 B[i] = new string[5];
             }
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<string> a = new List<string>();
+            foreach (string x in ((new StreamReader(filename2)).ReadToEnd()).Split('\n'))
+                if (x.Length == 6) a.Add(x);
+            string word = (a[(new Random(DateTime.Now.Millisecond)).Next(0, a.Count - 1)]);
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+            for (int i = 0; i < 5; i++)
+            {
+                dataGridView1.Columns.Add(i + "", "");
+                dataGridView1.Columns[i].Width = 40;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[i].Height = 40;
+                if (i == 2)
+                    for (int j = 0; j < 5; j++)
+                        dataGridView1[j, i].Value = word[j];
+                button2.Enabled = true;
+            }
+        }
     }
 }
