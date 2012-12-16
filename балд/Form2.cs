@@ -206,5 +206,34 @@ namespace балд
         {
             Close();
         }
+         private void button4_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+                MessageBox.Show("Введите имя 1 - го игрока!!!", "Ошибка", MessageBoxButtons.OK);
+            else
+                if (textBox2.Text == "")
+                    MessageBox.Show("Введите имя 2 - го игрока!!!", "Ошибка", MessageBoxButtons.OK);
+                else
+                {
+                    label1.Text = textBox1.Text;
+                    label2.Text = textBox2.Text;
+                    label4.Visible = false;
+                    label3.Visible = false;
+                    button4.Visible = false;
+                    button5.Visible = false;
+                    textBox1.Visible = false;
+                    textBox2.Visible = false;
+                    textBox3.Visible = true;
+                    textBox4.Visible = true;
+                    label1.Visible = true;
+                    label2.Visible = true;
+                    listBox1.Visible = true;
+                    listBox2.Visible = true;
+                    dataGridView1.Visible = true;
+                    button1.Visible = true;
+                    button2.Visible = true;
+                    button3.Visible = true;
+                }
+        }
     }
 }
