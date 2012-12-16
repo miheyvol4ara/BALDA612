@@ -47,5 +47,37 @@ namespace балд
                 q2 += rts.Length;
             }
         }
+        static void pastedm(ref string[][] A, DataGridView dtg)//Присвоение А элементов datagridview
+        {
+            for (int i = 0; i < A.Length; i++)
+                for (int j = 0; j < A[i].Length; j++)
+                    A[i][j] = dtg.Rows[i].Cells[j].Value as string;
+        }
+        //Проверка на правильное выделение
+        static void cellselectedcheck(DataGridView dtg, string[][] A, ref bool selectij, int cc)
+        {
+            //получаем индексы ich и jch первой выделенной буквы (выделение происходит наоборот, следовательно в коде - последней)
+            int ich = dtg.SelectedCells[cc - 1].RowIndex;
+            int jch = dtg.SelectedCells[cc - 1].ColumnIndex;
+            int dscr = dtg.SelectedCells[cc - 1].RowIndex;
+            int dscc = dtg.SelectedCells[cc - 1].ColumnIndex;
+            for (int i = cc - 2; i >= 0; i--)//Входим в цикл проверки
+            {
+                dscr = dtg.SelectedCells[i].RowIndex;//Переприсваиваем переменным индексы текущих строк и столбца
+                dscc = dtg.SelectedCells[i].ColumnIndex;
+                //Условие неправильного выделения
+                if ((dscr == ich && (dscc != jch + 1 && dscc != jch - 1)) || (dscc == jch && (dscr != ich + 1 && dscr != ich - 1)) || (dscr != ich && dscc != jch))
+                {
+                    selectij = false;
+                    break;
+                }
+                //В противном случае, перемещаем индексы для сравнения
+                else
+                {
+                    ich = dscr;
+                    jch = dscc;
+                }
+            }
+        }
     }
 }
