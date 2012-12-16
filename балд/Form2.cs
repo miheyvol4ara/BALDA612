@@ -198,5 +198,13 @@ namespace балд
                 button2.Enabled = true;
             }
         }
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = '\0';
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
