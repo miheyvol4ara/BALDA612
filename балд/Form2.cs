@@ -279,5 +279,202 @@ namespace балд
             rts = "";
             r.Close();
         }
+         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            //Обоже, в общем эта функция только моя, никому не надо знать, что тут происходит. Но она обрабатывает корректный ввод
+            var myGrid = (DataGridView)sender;
+            var myCellValue = myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value as string;
+            if (B[e.RowIndex][e.ColumnIndex] == " ")
+            {
+                if (A[e.RowIndex][e.ColumnIndex] == " ")
+                {
+                    if (inp)
+                    {
+                        if (e.RowIndex == 0 && e.ColumnIndex == 0)
+                        {
+                            var MyCell1 = myGrid.Rows[e.RowIndex + 1].Cells[e.ColumnIndex].Value as string;
+                            var MyCell2 = myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value as string;
+                            if (MyCell1 != " " || MyCell2 != " ")
+                            {
+                                    if ((int)myCellValue.Substring(0, 1).ToLower()[0] >= 1072 && (int)myCellValue.Substring(0, 1).ToLower()[0] <= 1103)
+                                    {
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = myCellValue.Substring(0, 1).ToLower();
+                                        pastedm(ref B, myGrid);
+                                        if (e.RowIndex != 2)
+                                            inp = false;
+                                    }
+                                    else
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                            }
+                            else
+                                myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                        }
+                        else if (e.RowIndex == 4 && e.ColumnIndex == 4)
+                        {
+                            var MyCell3 = myGrid.Rows[e.RowIndex - 1].Cells[e.ColumnIndex].Value as string;
+                            var MyCell4 = myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value as string;
+                            if (MyCell3 != " " || MyCell4 != " ")
+                            {
+                                    if ((int)myCellValue.Substring(0, 1).ToLower()[0] >= 1072 && (int)myCellValue.Substring(0, 1).ToLower()[0] <= 1103)
+                                    {
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = myCellValue.Substring(0, 1).ToLower();
+                                        pastedm(ref B, myGrid);
+                                        if (e.RowIndex != 2)
+                                            inp = false;
+                                    }
+                                    else
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                            }
+                            else
+                                myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                        }
+                        else if (e.RowIndex == 0 && e.ColumnIndex == 4)
+                        {
+                            var MyCell1 = myGrid.Rows[e.RowIndex + 1].Cells[e.ColumnIndex].Value as string;
+                            var MyCell4 = myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value as string;
+                            if (MyCell1 != " " || MyCell4 != " ")
+                            {
+                                    if ((int)myCellValue.Substring(0, 1).ToLower()[0] >= 1072 && (int)myCellValue.Substring(0, 1).ToLower()[0] <= 1103)
+                                    {
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = myCellValue.Substring(0, 1).ToLower();
+                                        pastedm(ref B, myGrid);
+                                        if (e.RowIndex != 2)
+                                            inp = false;
+                                    }
+                                    else
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                            }
+                            else
+                                myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                        }
+                        else if (e.RowIndex == 4 && e.ColumnIndex == 0)
+                        {
+                            var MyCell3 = myGrid.Rows[e.RowIndex - 1].Cells[e.ColumnIndex].Value as string;
+                            var MyCell2 = myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value as string;
+                            if (MyCell2 != " " || MyCell3 != " ")
+                            {
+                                    if ((int)myCellValue.Substring(0, 1).ToLower()[0] >= 1072 && (int)myCellValue.Substring(0, 1).ToLower()[0] <= 1103)
+                                    {
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = myCellValue.Substring(0, 1).ToLower();
+                                        pastedm(ref B, myGrid);
+                                        if (e.RowIndex != 2)
+                                            inp = false;
+                                    }
+                                    else
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                            }
+                            else
+                                myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                        }
+                        else if (e.RowIndex == 0)
+                        {
+                            var MyCell1 = myGrid.Rows[e.RowIndex + 1].Cells[e.ColumnIndex].Value as string;
+                            var MyCell2 = myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value as string;
+                            var MyCell4 = myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value as string;
+                            if (MyCell1 != " " || MyCell2 != " " || MyCell4 != " ")
+                            {
+                                    if ((int)myCellValue.Substring(0, 1).ToLower()[0] >= 1072 && (int)myCellValue.Substring(0, 1).ToLower()[0] <= 1103)
+                                    {
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = myCellValue.Substring(0, 1).ToLower();
+                                        pastedm(ref B, myGrid);
+                                        if (e.RowIndex != 2)
+                                            inp = false;
+                                    }
+                                    else
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                            }
+                            else
+                                myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                        }
+                        else if (e.RowIndex == 4)
+                        {
+                            var MyCell3 = myGrid.Rows[e.RowIndex - 1].Cells[e.ColumnIndex].Value as string;
+                            var MyCell2 = myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value as string;
+                            var MyCell4 = myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value as string;
+                            if (MyCell3 != " " || MyCell2 != " " || MyCell4 != " ")
+                            {
+                                    if ((int)myCellValue.Substring(0, 1).ToLower()[0] >= 1072 && (int)myCellValue.Substring(0, 1).ToLower()[0] <= 1103)
+                                    {
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = myCellValue.Substring(0, 1).ToLower();
+                                        pastedm(ref B, myGrid);
+                                        if (e.RowIndex != 2)
+                                            inp = false;
+                                    }
+                                    else
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                            }
+                            else
+                                myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                        }
+                        else if (e.ColumnIndex == 0)
+                        {
+                            var MyCell3 = myGrid.Rows[e.RowIndex - 1].Cells[e.ColumnIndex].Value as string;
+                            var MyCell1 = myGrid.Rows[e.RowIndex + 1].Cells[e.ColumnIndex].Value as string;
+                            var MyCell2 = myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex + 1].Value as string;
+                            if (MyCell2 != " " || MyCell3 != " " || MyCell1 != " ")
+                            {
+                                if (!string.IsNullOrWhiteSpace(myCellValue))
+                                {
+                                        if ((int)myCellValue.Substring(0, 1).ToLower()[0] >= 1072 && (int)myCellValue.Substring(0, 1).ToLower()[0] <= 1103)
+                                        {
+                                            myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = myCellValue.Substring(0, 1).ToLower();
+                                            pastedm(ref B, myGrid);
+                                            if (e.RowIndex != 2)
+                                                inp = false;
+                                        }
+                                        else
+                                            myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                                }
+                            }
+                            else
+                                myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                        }
+                        else if (e.ColumnIndex == 4)
+                        {
+                            var MyCell3 = myGrid.Rows[e.RowIndex - 1].Cells[e.ColumnIndex].Value as string;
+                            var MyCell1 = myGrid.Rows[e.RowIndex + 1].Cells[e.ColumnIndex].Value as string;
+                            var MyCell4 = myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value as string;
+                            if (MyCell4 != " " || MyCell3 != " " || MyCell1 != " ")
+                            {
+                                if (!string.IsNullOrWhiteSpace(myCellValue))
+                                {
+                                        if ((int)myCellValue.Substring(0, 1).ToLower()[0] >= 1072 && (int)myCellValue.Substring(0, 1).ToLower()[0] <= 1103)
+                                        {
+                                            myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = myCellValue.Substring(0, 1).ToLower();
+                                            pastedm(ref B, myGrid);
+                                            if (e.RowIndex != 2)
+                                                inp = false;
+                                        }
+                                        else
+                                            myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                                }
+                            }
+                            else
+                                myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                        }
+                        else
+                            if (!string.IsNullOrWhiteSpace(myCellValue))
+                            {
+                                    if ((int)myCellValue.Substring(0, 1).ToLower()[0] >= 1072 && (int)myCellValue.Substring(0, 1).ToLower()[0] <= 1103)
+                                    {
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = myCellValue.Substring(0, 1).ToLower();
+                                        pastedm(ref B, myGrid);
+                                        if (e.RowIndex != 2)
+                                            inp = false;
+                                    }
+                                    else
+                                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                            }
+                    }
+                    else
+                        myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = " ";
+                }
+                else
+                    myGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = A[e.RowIndex][e.ColumnIndex];
+            }
+            else
+                ii = e.RowIndex;
+            jj = e.ColumnIndex;
+        }
     }
 }
