@@ -159,5 +159,21 @@ namespace балд
                 inp = true;
             }
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            textBox3.Text = Convert.ToString(0);
+            textBox4.Text = Convert.ToString(0);
+            label4.Visible = true;
+            label3.Visible = true;
+            button4.Visible = true;
+            button5.Visible = true;
+            textBox1.Visible = true;
+            textBox2.Visible = true;
+            for (int i = 0; i < 6; i++)
+            {
+                A[i] = new string[5];
+                B[i] = new string[5];
+            }
+        }
     }
 }
