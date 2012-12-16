@@ -79,5 +79,85 @@ namespace балд
                 }
             }
         }
+          private void button2_Click(object sender, EventArgs e)
+        { rts = "";
+            bool startwinp = false, selectij = true;//Объявление переменных
+            //Объявлены тут, а не глобально, потому что их каждый раз надо переприсваивать по новой
+            //korm отвечает за наличие введенного слова в списке использованных, plu - словарь,
+            //startwinp подтверждает, что слово содержит введенную букву, и буква была вообще введена
+            //selectij будет false, если выделение происходило неверно.
+            bap(A, ref B);//Сразу присвоим B=A
+            for (int i = 0; i < A.Length; i++)//Проверка на использование введенной буквы
+                for (int j = 0; j < A[i].Length; j++)
+                    if ((A[i][j] != dataGridView1.Rows[i].Cells[j].Value as string) && (dataGridView1.Rows[ii].Cells[jj].Selected == true))
+                    {
+                        startwinp = true;
+                        break;
+                    }
+            cc = dataGridView1.GetCellCount(DataGridViewElementStates.Selected);//считаем кол-во выделеных букв
+            cellselectedcheck(dataGridView1, A, ref selectij, cc);//Проверка на адекватное выделение
+            if (selectij)//Если правильно выделено...
+            {
+                if (startwinp)//Если буква использована
+                {
+                    if (cc > 0)//Если вообще что-то выделено
+                        for (int i = 0; i < cc; i++)//строке str=значение выделеных ячеек
+                            str += dataGridView1.SelectedCells[i].Value;
+                    for (int i = str.Length - 1; i >= 0; i--)//Переопределяем str в rts
+                        rts += str[i];
+                    xx = x.Split(' ');//Разбиваем наш массив использованных слов по пробелам
+                    maincheck(filename2, xx, ref x, rts);
+                    inp = true;//Разрешаем ввод
+                    bap(A, ref B);
+                    //Вводим очки
+                    textBox3.Text = Convert.ToString(q1);
+                    textBox4.Text = Convert.ToString(q2);
+                    bool winner = false;//Инциализируем переменную для конца игры
+                    for (int i = 0; i < A.Length; i++)
+                        for (int j = 0; j < A[i].Length; j++)
+                            if (A[i][j] == " ")
+                            {
+                                winner = false;
+                                break;
+                            }
+                    if (winner)//Если пустых мест нет
+                    {
+                        //Открываем файл с рекордами
+                        StreamReader rr = new StreamReader(filename2);
+                        if (q1 > q2)//Если у первого игрока больше баллов, чем у второго
+                        {
+                            MessageBox.Show("Победитель - 1" + label1.Text, "Конец");
+                        }
+                        else if (q1 < q2)
+                        {
+                            MessageBox.Show("Победитель - " + label2.Text, "Конец");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ничья", "Конец");
+                        }
+                        rr.Close();
+                    }
+                }
+                else//если ошибка в использовании буквы
+                {
+                    MessageBox.Show("Вы пытаетесь ввести слово, не вписав букву, или не использовав ее?", "Ошибка");
+                    for (int i = 0; i < A.Length; i++)
+                        for (int j = 0; j < A[i].Length; j++)
+                            if (A[i][j] != dataGridView1.Rows[i].Cells[j].Value as string)
+                                dataGridView1.Rows[i].Cells[j].Value = " ";
+                    inp = true;
+                }
+            }
+            else//Если слово выделяли неправильно
+            {
+                MessageBox.Show("Вы выделяете буквы как попало", "Ошибка");
+                for (int i = 0; i < A.Length; i++)
+                    for (int j = 0; j < A[i].Length; j++)
+                        if (A[i][j] != dataGridView1.Rows[i].Cells[j].Value as string)
+                            dataGridView1.Rows[i].Cells[j].Value = " ";
+                inp = true;
+            }
+        }
     }
 }
